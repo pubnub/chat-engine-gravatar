@@ -1,3 +1,3 @@
-# Emoji Plugin
+# Gravatar Plugin
 
-See test.js for an example of usage.
+Add gravatar to users on OCF
