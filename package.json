@@ -5,12 +5,13 @@
   "open-chat-framework": {
     "namespace": "gravatar"
   },
+  "dependencies": {
+    "gravatar": "^1.6.0",
+    "ocf": "^0.0.2"
+  },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.3.0",
     "ocf": "0.0.2"
-  },
-  "dependencies": {
-    "gravatar": "^1.6.0"
   }
 }
