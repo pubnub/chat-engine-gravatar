@@ -1,13 +1,10 @@
 {
   "name": "ocf-gravatar",
   "version": "0.0.1",
-  "main": "./plugin.js",
-  "open-chat-framework": {
-    "namespace": "gravatar"
-  },
+  "main": "src/plugin.js",
   "dependencies": {
     "gravatar": "^1.6.0",
-    "ocf": "^0.0.2"
+    "ocf": "^0.0.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",

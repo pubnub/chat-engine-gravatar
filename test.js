@@ -1,8 +1,8 @@
 
 const assert = require('chai').assert;
-const gravatar = require('./plugin.js');
+const gravatar = require('./src/plugin.js');
 
-const OpenChatFramework = require('ocf'); 
+const OpenChatFramework = require('ocf');
 
 let pluginchat;
 let OCF;
@@ -14,7 +14,7 @@ describe('config', function() {
         OCF = OpenChatFramework.create({
             globalChannel: 'test-channel',
             rltm: {
-                service: 'pubnub', 
+                service: 'pubnub',
                     config: {
                     publishKey: 'pub-c-07824b7a-6637-4e6d-91b4-7f0505d3de3f',
                     subscribeKey: 'sub-c-43b48ad6-d453-11e6-bd29-0619f8945a4f',
@@ -44,7 +44,7 @@ describe('connect', function() {
 describe('plugins', function() {
 
     it('should be created', function() {
-        
+
         pluginchat = new OCF.Chat('pluginchat' + new Date().getTime());
 
     });
@@ -54,7 +54,7 @@ describe('plugins', function() {
         let users = {};
         let generate = {
             'ian': {
-                email: 'ian@pubnub.com' 
+                email: 'ian@pubnub.com'
             },
             'stephen': {
                 email: 'stephen@pubnub.com'
@@ -67,11 +67,11 @@ describe('plugins', function() {
         };
 
         for(let uuid in generate) {
-            
+
             user = new OCF.User(uuid, generate[uuid]);
-            
+
             user.plugin(gravatar());
-            
+
             assert.equal(user.state().gravatar, results[uuid]);
 
         }
