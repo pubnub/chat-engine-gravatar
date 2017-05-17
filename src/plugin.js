@@ -4,7 +4,7 @@ module.exports = (config) => {
 
     class extension {
         construct() {
-            
+
             if(this.parent.state().email) {
 
                 this.parent.update({
@@ -17,6 +17,7 @@ module.exports = (config) => {
     }
 
     return {
+        namespace: 'gravatar',
         extends: {
             User: extension,
             Me: extension,
