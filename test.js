@@ -11,17 +11,11 @@ describe('config', function() {
 
     it('should be configured', function() {
 
-        OCF = OpenChatFramework.create({
-            globalChannel: 'test-channel',
-            rltm: {
-                service: 'pubnub',
-                    config: {
-                    publishKey: 'demo',
-                    subscribeKey: 'demo',
-                    uuid: new Date(),
-                    state: {}
-                }
-            }
+        OCF = OpenChatFramework.create('test-channel', {
+            publishKey: 'demo',
+            subscribeKey: 'demo',
+            uuid: new Date(),
+            state: {}
         });
 
         assert.isOk(OCF);
