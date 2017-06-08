@@ -1,11 +1,11 @@
-{
+  {
   "author": "Ian Jennings",
-  "name": "ocf-gravatar",
+  "name": "chat-engine-gravatar",
   "version": "0.0.2",
   "main": "src/plugin.js",
   "dependencies": {
     "gravatar": "^1.6.0",
-    "ocf": "^0.1.3"
+    "chat-engine": "^0.1.3"
   },
   "devDependencies": {
     "chai": "^3.5.0",
