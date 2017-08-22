@@ -4,9 +4,12 @@
 */
 
 let gravatar = require('gravatar');
+const dotty = require("dotty");
 
 /**
 * @function
+* @param {Object} [config={}] The plugin config object
+* @param {String} [config.prop="email"] The {@link User#state} property to use as gravatar.
 * @example
 *
 * chat = new ChatEngine.Chat(new Date().getTime());
@@ -14,19 +17,21 @@ let gravatar = require('gravatar');
 * user.plugin(gravatar());
 * console.log(user.state().gravatar());
 */
-module.exports = (config) => {
+module.exports = (config = {}) => {
+
+    config.prop = config.prop || 'email';
 
     class extension {
         construct() {
 
-            if(this.parent.state().email) {
+            if(dotty.exists(this.parent.state(), config.prop)) {
 
                 /**
                 @member state()"."gravatar
                 @ceextends User
                 */
                 this.parent.update({
-                    gravatar: gravatar.url(this.parent.state().email)
+                    gravatar: gravatar.url(dotty.get(this.parent.state(), config.prop))
                 });
 
             }
