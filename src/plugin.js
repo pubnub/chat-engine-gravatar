@@ -1,5 +1,5 @@
 /**
-* Update all {@link Users}'s state and add a gravatar property based on ```user.state().email```. Result assigned to ```user.state().gravatar```.
+* Update all {@link Users}'s state and add a gravatar property based on ```user.state.email```. Result assigned to ```user.state.gravatar```.
 * @module chat-engine-gravatar
 */
 
@@ -15,7 +15,7 @@ const dotty = require("dotty");
 * chat = new ChatEngine.Chat(new Date().getTime());
 * user = new OCF.User('ian', {email: 'ian@pubnub.com'});
 * user.plugin(gravatar());
-* console.log(user.state().gravatar());
+* console.log(user.state.gravatar;
 */
 module.exports = (config = {}) => {
 
@@ -24,14 +24,14 @@ module.exports = (config = {}) => {
     class extension {
         construct() {
 
-            if(dotty.exists(this.parent.state(), config.prop)) {
+            if(dotty.exists(this.parent.state, config.prop)) {
 
                 /**
                 @member state()"."gravatar
                 @ceextends User
                 */
                 this.parent.update({
-                    gravatar: gravatar.url(dotty.get(this.parent.state(), config.prop))
+                    gravatar: gravatar.url(dotty.get(this.parent.state, config.prop))
                 });
 
             }
