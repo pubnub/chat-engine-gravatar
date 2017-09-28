@@ -2,23 +2,23 @@
 const assert = require('chai').assert;
 const gravatar = require('./src/plugin.js');
 
-const OpenChatFramework = require('ocf');
+const ChatEngine = require('chat-engine');
 
 let pluginchat;
-let OCF;
+let CE;
 
 describe('config', function() {
 
     it('should be configured', function() {
 
-        OCF = OpenChatFramework.create('test-channel', {
+        CE = ChatEngine.create('test-channel', {
             publishKey: 'demo',
             subscribeKey: 'demo',
             uuid: new Date(),
             state: {}
         });
 
-        assert.isOk(OCF);
+        assert.isOk(CE);
 
     });
 
@@ -28,8 +28,13 @@ describe('connect', function() {
 
     it('should be identified as new user', function() {
 
-        me = OCF.connect('robot-tester', {works: true});
-        assert.isObject(me);
+        CE.connect('robot-tester', {works: true});
+
+        CE.on('$.ready', (data) => {
+
+            assert.isObject(data.me);
+
+        })
 
     });
 
@@ -39,7 +44,7 @@ describe('plugins', function() {
 
     it('should be created', function() {
 
-        pluginchat = new OCF.Chat('pluginchat' + new Date().getTime());
+        pluginchat = new CE.Chat('pluginchat' + new Date().getTime());
 
     });
 
@@ -62,11 +67,13 @@ describe('plugins', function() {
 
         for(let uuid in generate) {
 
-            user = new OCF.User(uuid, generate[uuid]);
+            user = new CE.User(uuid, generate[uuid]);
 
             user.plugin(gravatar());
 
-            assert.equal(user.state().gravatar, results[uuid]);
+            console.log(user.state)
+
+            assert.equal(user.state.gravatar, results[uuid]);
 
         }
 
