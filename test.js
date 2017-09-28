@@ -11,11 +11,12 @@ describe('config', function() {
 
     it('should be configured', function() {
 
-        CE = ChatEngine.create('test-channel', {
-            publishKey: 'demo',
-            subscribeKey: 'demo',
-            uuid: new Date(),
-            state: {}
+        CE = ChatEngine.create({
+            publishKey: 'pub-c-c6303bb2-8bf8-4417-aac7-e83b52237ea6',
+            subscribeKey: 'sub-c-67db0e7a-50be-11e7-bf50-02ee2ddab7fe',
+        }, {
+            endpoint: 'http://localhost:3000/insecure',
+            globalChannel: 'test-channel'
         });
 
         assert.isOk(CE);
@@ -26,15 +27,16 @@ describe('config', function() {
 
 describe('connect', function() {
 
-    it('should be identified as new user', function() {
+    it('should be identified as new user', function(done) {
 
-        CE.connect('robot-tester', {works: true});
+        CE.connect('robot-tester', {works: true}, 'auth-key');
 
         CE.on('$.ready', (data) => {
 
             assert.isObject(data.me);
+            done();
 
-        })
+        });
 
     });
 
