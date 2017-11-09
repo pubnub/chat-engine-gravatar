@@ -27,7 +27,7 @@ module.exports = (config = {}) => {
             if(dotty.exists(this.parent.state, config.prop)) {
 
                 /**
-                @member state()"."gravatar
+                @member state"."gravatar
                 @ceextends User
                 */
                 this.parent.update({
