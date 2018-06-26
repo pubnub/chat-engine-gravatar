@@ -20,7 +20,7 @@ const dotty = require("dotty");
 module.exports = (config = {}) => {
 
     config.prop = config.prop || 'email';
-    config.chat = config.chat || false;
+    config.chat = config.chat || undefined;
 
     class extension {
         construct() {
