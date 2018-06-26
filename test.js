@@ -2,7 +2,7 @@
 const assert = require('chai').assert;
 const gravatar = require('./src/plugin.js');
 
-const ChatEngine = require('chat-engine');
+const ChatEngine = require('../chat-engine/src/');
 
 let pluginchat;
 let CE;
@@ -12,11 +12,10 @@ describe('config', function() {
     it('should be configured', function() {
 
         CE = ChatEngine.create({
-            publishKey: 'pub-c-c6303bb2-8bf8-4417-aac7-e83b52237ea6',
-            subscribeKey: 'sub-c-67db0e7a-50be-11e7-bf50-02ee2ddab7fe',
+            publishKey: 'pub-c-01491c54-379f-4d4a-b20b-9a03c24447c7',
+            subscribeKey: 'sub-c-eaf4a984-4356-11e8-91e7-8ad1b2d46395'
         }, {
-            endpoint: 'http://localhost:3000/insecure',
-            globalChannel: 'test-channel'
+            namespace: 'test-channel'
         });
 
         assert.isOk(CE);
@@ -29,7 +28,7 @@ describe('connect', function() {
 
     it('should be identified as new user', function(done) {
 
-        CE.connect('robot-tester', {works: true}, 'auth-key');
+        CE.connect('robot-tester', 'auth-key', {works: true});
 
         CE.on('$.ready', (data) => {
 
@@ -73,9 +72,9 @@ describe('plugins', function() {
 
             user.plugin(gravatar());
 
-            console.log(user.state)
+            console.log(user.state())
 
-            assert.equal(user.state.gravatar, results[uuid]);
+            assert.equal(user.state().gravatar, results[uuid]);
 
         }
 

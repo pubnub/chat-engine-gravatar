@@ -20,18 +20,19 @@ const dotty = require("dotty");
 module.exports = (config = {}) => {
 
     config.prop = config.prop || 'email';
+    config.chat = config.chat || false;
 
     class extension {
         construct() {
 
-            if(dotty.exists(this.parent.state, config.prop)) {
+            if(dotty.exists(this.parent.state(config.chat), config.prop)) {
 
                 /**
                 @member state"."gravatar
                 @ceextends User
                 */
                 this.parent.update({
-                    gravatar: gravatar.url(dotty.get(this.parent.state, config.prop))
+                    gravatar: gravatar.url(dotty.get(this.parent.state(config.chat), config.prop))
                 });
 
             }
