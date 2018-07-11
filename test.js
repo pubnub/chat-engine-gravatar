@@ -43,7 +43,7 @@ describe('connect', function() {
 
 describe('plugins', function() {
 
-    it('list of users should have gravaars', function() {
+    it('list of users should have gravatars', function() {
 
         let users = {};
         let generate = {
@@ -66,7 +66,7 @@ describe('plugins', function() {
 
             user.plugin(gravatar());
 
-            // assert.equal(user.state().gravatar, results[uuid]);
+            assert.equal(user.state().gravatar, results[uuid]);
 
         }
 
