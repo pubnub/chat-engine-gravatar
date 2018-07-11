@@ -1,10 +1,10 @@
 {
   "author": "Ian Jennings",
   "name": "chat-engine-gravatar",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "main": "src/plugin.js",
   "dependencies": {
-    "chat-engine": "^0.10.2",
+    "chat-engine": "^0.10.0",
     "dotty": "0.0.2",
     "gravatar": "^1.6.0"
   },
