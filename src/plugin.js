@@ -25,7 +25,7 @@ module.exports = (config = {}) => {
     class extension {
         construct() {
 
-            if(dotty.exists(this.parent.state(config.chat), config.prop)) {
+            if(dotty.exists(this.parent, config.prop)) {
 
                 /**
                 @member state()"."gravatar
