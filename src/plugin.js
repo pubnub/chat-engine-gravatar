@@ -1,4 +1,5 @@
 /**
+* @overview Create an avatar based on user state information using the [Gravatar](https://en.gravatar.com/) service.
 * Update all {@link Users}'s state and add a gravatar property based on ```user.state.email```. Result assigned to ```user.state.gravatar```.
 * @module chat-engine-gravatar
 */
